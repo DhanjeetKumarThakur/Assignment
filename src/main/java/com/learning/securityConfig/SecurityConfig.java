@@ -1,5 +1,6 @@
 package com.learning.securityConfig;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -11,10 +12,13 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-	@Bean
-	public UserDetailsService getUserDetailsService() {
-		return new UserDetailsServiceImpl();
-	}
+//	@Bean
+//	public UserDetailsService getUserDetailsService() {
+//		return new UserDetailsServiceImpl();
+//	}
+	
+	@Autowired
+	private UserDetailsServiceImpl userDetailsServiceImpl;
 
 	// We need the bean of BCryptPasswordEncoder for encoding our password
 	@Bean
@@ -27,7 +31,7 @@ public class SecurityConfig {
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-		daoAuthenticationProvider.setUserDetailsService(this.getUserDetailsService());
+		daoAuthenticationProvider.setUserDetailsService(this.userDetailsServiceImpl);
 		daoAuthenticationProvider.setPasswordEncoder(this.passwordEncoder());
 		return daoAuthenticationProvider;
 	}
