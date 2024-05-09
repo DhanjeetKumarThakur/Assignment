@@ -34,17 +34,21 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" th:href="@{/home/user/index}">Home</a>
+						<a class="nav-link text-white active" aria-current="page" th:href="@{/home/user/index}">Home</a>
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link active" href="#">
+						<a class="nav-link text-white" href="#">
 							<span th:text="${user.fname}"></span>
 						</a>
 					</li>
-
+					
 					<li class="nav-item">
-						<a class="nav-link text-dark" th:href="@{/logout}">Logout</a>
+						<a class="nav-link text-white" href="#" tabindex="-1" aria-disabled="true">Tracker</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link text-white" th:href="@{/logout}">Logout</a>
 					</li>
 					
 				</ul>
@@ -57,7 +61,7 @@
 	<!--Main Content-->
 	<div th:replace="${content}"></div>
 
-	<div id="footer">
+	<div id="footer" class="fixed-bottom">
 		<!-- footer design starting -->
 		<!-- Remove the container if you want to extend the Footer to full width. -->
 		<div class="footer">
