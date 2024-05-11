@@ -73,13 +73,11 @@ public class HomeController {
 				 throw new SQLException("Duplicate Email Registration");
 			}
 
-
-
-			model.addAttribute("user", user);
 			User u1= userService.saveUser(user);
 
 			 model.addAttribute("successMessage", "Registration Successfully Done");
-			return "redirect:/register";
+			 model.addAttribute("user", new User());
+			return "register";
 			}
 		catch(SQLException s) {
 	    	 s.printStackTrace();
